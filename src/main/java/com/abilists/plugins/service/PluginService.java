@@ -1,6 +1,6 @@
 package com.abilists.plugins.service;
 
-public interface LtapService {
+public interface PluginService {
 
 	public String loginLtap() throws Exception;
 
