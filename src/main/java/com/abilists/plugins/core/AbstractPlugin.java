@@ -1,4 +1,4 @@
-package com.abilists.plugins;
+package com.abilists.plugins.core;
 
 import com.abilists.plugins.service.PluginService;
 

@@ -2,6 +2,6 @@ package com.abilists.plugins.service;
 
 public interface PluginService {
 
-	public String loginLtap() throws Exception;
+	public String createTables() throws Exception;
 
 }
