@@ -79,6 +79,30 @@ dependencies {
 	testCompile "junit:junit:4.12"
 }
 
+jar {
+    manifest {
+        attributes (
+        	'Specification-Title': 'abilists_plugins.jar',
+        	'Specification-Version': version,
+        	'Specification-Vendor': 'Softfran Tech, Inc.',
+        	'Built-By': System.properties['user.name'],
+        	'Build-Timestamp': new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date()),
+        	'Created-By': "Gradle ${gradle.gradleVersion}",
+        	'Build-Jdk': "${System.properties['java.version']}",
+        	'Implementation-Title': 'abilists plugins', 
+        	'Implementation-Version': version, 
+        	'Class-Path': configurations.runtime.files.collect { 'libs/' + it.name }.join(' ')
+        )
+    }
+	exclude ("spring/**")
+	exclude ("configure/**")
+	exclude ("plugins/**")
+	exclude ("template/**")
+	exclude ("sql/**")
+	exclude ("**.xml")
+	exclude ("**.properties")
+}
+
 // $ gradle install
 configure(install.repositories.mavenInstaller) {
     pom.project {
@@ -95,6 +119,7 @@ configure(install.repositories.mavenInstaller) {
         }
     }
 }
+
 
 // $ gradle buildJar
 task buildJar << {
