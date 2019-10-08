@@ -1,6 +1,7 @@
 package com.abilists.plugins.core;
 
 import java.io.File;
+import java.lang.reflect.Field;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.HashMap;
@@ -53,6 +54,16 @@ public class PluginsClassLoader extends ClassLoader {
 		URL[] jarUrls = new URL[]{fileURL};
 
 		dataMap.put(key, new PluginData(className, jarUrls, cl));
+	}
+
+	public static Field findUnderlying(Class<?> clazz, String fieldName) {
+	    Class<?> current = clazz;
+	    do {
+	       try {
+	           return current.getDeclaredField(fieldName);
+	       } catch(Exception e) {}
+	    } while((current = current.getSuperclass()) != null);
+	    return null;
 	}
 
 }
