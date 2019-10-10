@@ -6,29 +6,51 @@
     <!-- encoders are assigned the type
          ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
     <encoder>
-      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+      <pattern>%date{dd MMM yyyy;HH:mm:ss.SSS} [%thread] %-5level %logger{16}.%M\(%line\) - %msg%n</pattern>
     </encoder>
   </appender>
 
-  <appender name="SAMPLE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
-	<file>/tmp/sample.log</file>
+  <property resource="logback.properties" />  
+
+  <appender name="ABILISTS_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<file>${tomcat.logs.path}/logs/abilists.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 		<!-- daily rollover -->
-		<fileNamePattern>/tmp/sample.log.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+		<fileNamePattern>${tomcat.logs.path}/logs/abilists.log.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
 		<!-- keep 90 days' worth of history -->
 		<maxHistory>90</maxHistory>
     </rollingPolicy>
     <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
 		<charset>UTF-8</charset>
 		<layout class="ch.qos.logback.classic.PatternLayout">
-			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{35} - %msg%n</pattern>
+			<pattern>%date{dd MMM yyyy;HH:mm:ss.SSS} [%thread] %-5level %logger{16}.%M\(%line\) - %msg%n</pattern>
 		</layout>
     </encoder>
-
   </appender>
 
+  <appender name="DELETE_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<file>${tomcat.logs.path}/logs/abilists_delete.log</file>
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+		<!-- daily rollover -->
+		<fileNamePattern>${tomcat.logs.path}/logs/abilists_delete.log.%d{yyyy-MM-dd}.log.zip</fileNamePattern>
+		<!-- keep 90 days' worth of history -->
+		<maxHistory>90</maxHistory>
+    </rollingPolicy>
+    <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+		<charset>UTF-8</charset>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%date{dd MMM yyyy;HH:mm:ss.SSS} [%thread] %-5level %logger{16}.%M\(%line\) - %msg%n</pattern>
+		</layout>
+    </encoder>
+  </appender>
+
+  <logger name="deleteLog" additivity="false">
+  	<level value="INFO" />
+  	<appender-ref ref="DELETE_LOG" />
+  </logger>
+
   <root>
-  	<level value="info" />
+	<level value="INFO" />
 	<appender-ref ref="STDOUT" />
   </root>
 

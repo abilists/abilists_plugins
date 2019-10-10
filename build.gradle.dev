@@ -94,13 +94,11 @@ jar {
         	'Class-Path': configurations.runtime.files.collect { 'libs/' + it.name }.join(' ')
         )
     }
-//	exclude ("spring/**")
-//	exclude ("configure/**")
-//	exclude ("plugins/**")
+
 //	exclude ("template/**")
-//	exclude ("sql/**")
 //	exclude ("**.xml")
 //	exclude ("**.properties")
+
 }
 
 // $ gradle install
