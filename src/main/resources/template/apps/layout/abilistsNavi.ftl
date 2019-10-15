@@ -38,17 +38,12 @@
 	              </ul>
 	            </li>
 	        <#else>
-	            <li <#if model??><#if model.navi??><#if model.navi == "abilists">class="active"</#if></#if></#if>><a href="/abilists/"><@spring.message "navi.title.abilists"/></a></li>
-	            <li <#if model??><#if model.navi??><#if model.navi == "blog">class="active"</#if></#if></#if>><a href="http://abilist.blogspot.jp" target="_blank"><@spring.message "navi.title.blog"/></a></li>
+	            <li <#if model??><#if model.navi??><#if model.navi == "abilists">class="active"</#if></#if></#if>><a href="/abilists/"> abilists </a></li>
+	            <li <#if model??><#if model.navi??><#if model.navi == "blog">class="active"</#if></#if></#if>><a href="http://abilist.blogspot.jp" target="_blank"> Blog </a></li>
             </#if>
           </ul>
 
       	  <ul class="nav navbar-nav navbar-right">
-      	  	<#if user??>
-      		  <#include "/apps/login/naviLogin.ftl">
-			<#else>
-      		  <#include "/apps/login/naviLogout.ftl">
-	     	</#if>
 
 <#include "/apps/common/abilistsLang.ftl"/>
 

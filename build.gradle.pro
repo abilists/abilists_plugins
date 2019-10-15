@@ -34,7 +34,7 @@ buildscript {
 	}
 }
 
-version = 'DEV0.0.1'
+version = '0.0.1'
 
 jar {
 	manifest {
@@ -95,10 +95,9 @@ jar {
         )
     }
 
-//	exclude ("template/**")
-//	exclude ("**.xml")
-//	exclude ("**.properties")
-
+	exclude ("template/**")
+	exclude ("**.xml")
+	exclude ("**.properties")
 }
 
 // $ gradle install
