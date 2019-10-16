@@ -124,6 +124,7 @@ task buildJar << {
 	copy {
 		from "build/libs/abilists_plugins-" + version + ".jar"
 		into "${System.getProperty( 'user.dir' )}" + "/../abilists_client/libs"
+		into "${System.getProperty( 'user.dir' )}" + "/../plugin_survey/libs"
 		include '**/*.jar'
 	}
 }

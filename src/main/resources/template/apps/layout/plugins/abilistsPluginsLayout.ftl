@@ -4,14 +4,16 @@
 	<#include "abilistsPluginsHeader.ftl"/>
 	<body>
 		<#include "/apps/common/abilistsLoading.ftl"/>
+		<#include "/apps/layout/abilistsNavi.ftl"/>
 		<div class="bg-image">
 		    <div class="container">
-
+		    	<#include "abilistsPluginsMenu.ftl"/>
 				<#nested/>
 
 				<#include "/apps/common/footer.ftl">
 		    </div><!-- /container -->
 		</div>
+		<#include "/apps/common/abilistsFooder.ftl"/>
 	</body>
 </html>
 </#macro>
