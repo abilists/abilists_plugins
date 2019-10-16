@@ -1,6 +1,6 @@
 package com.abilists.plugins.controller;
 
-public abstract class AbstractController {
+public abstract class AbstractController implements PluginsController {
 
 	public static final String PREFIX_IST_KEY = "ist";
 	public static final String PREFIX_UDT_KEY = "udt";

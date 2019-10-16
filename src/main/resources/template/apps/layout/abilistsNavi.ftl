@@ -9,7 +9,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/abilists"><img src="/static/apps/img/bi02.png" class="img-responsive" width="70" alt="abilists" /></a>
+          <a class="navbar-brand" href="${configBean.baseURL?if_exists}/abilists"><img src="${configBean.contextPath?if_exists}/static/apps/img/bi02.png" class="img-responsive" width="70" alt="abilists" /></a>
         </div>
 
         <div id="navbar" class="navbar-collapse collapse">
@@ -38,7 +38,7 @@
 	              </ul>
 	            </li>
 	        <#else>
-	            <li <#if model??><#if model.navi??><#if model.navi == "abilists">class="active"</#if></#if></#if>><a href="/abilists/"> abilists </a></li>
+	            <li <#if model??><#if model.navi??><#if model.navi == "abilists">class="active"</#if></#if></#if>><a href="/abilists/"><@spring.message "navi.title.abilists"/></a></li>
 	            <li <#if model??><#if model.navi??><#if model.navi == "blog">class="active"</#if></#if></#if>><a href="http://abilist.blogspot.jp" target="_blank"> Blog </a></li>
             </#if>
           </ul>
