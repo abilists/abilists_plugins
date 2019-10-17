@@ -34,7 +34,7 @@ buildscript {
 	}
 }
 
-version = '0.0.1'
+version = 'DEV0.0.1'
 
 jar {
 	manifest {
@@ -95,9 +95,10 @@ jar {
         )
     }
 
-	exclude ("template/**")
-	exclude ("**.xml")
-	exclude ("**.properties")
+//	exclude ("template/**")
+//	exclude ("**.xml")
+//	exclude ("**.properties")
+
 }
 
 // $ gradle install
@@ -123,6 +124,7 @@ task buildJar << {
 	copy {
 		from "build/libs/abilists_plugins-" + version + ".jar"
 		into "${System.getProperty( 'user.dir' )}" + "/../abilists_client/libs"
+		into "${System.getProperty( 'user.dir' )}" + "/../plugin_survey/libs"
 		include '**/*.jar'
 	}
 }
