@@ -9,7 +9,6 @@
 		    <div class="container">
 		    	<#include "abilistsPluginsMenu.ftl"/>
 				<#nested/>
-
 				<#include "/apps/common/footer.ftl">
 		    </div><!-- /container -->
 		</div>
