@@ -34,7 +34,7 @@ buildscript {
 	}
 }
 
-version = 'DEV0.0.1'
+version = 'DEV0.1.0'
 
 jar {
 	manifest {
