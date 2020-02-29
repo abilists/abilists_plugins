@@ -15,7 +15,7 @@
 		</#if>
 	</#if>
 <#-- This is the option which push notification -->
-<#if optionsList[4]??><#if optionsList[4].uoValue == "1">
+<#if optionsList??><#if optionsList[4].uoValue == "1">
 	var liMain;
 	var dadgeId = document.getElementById("dadgeId");
 	var notiListId = document.getElementById("notiListId");
@@ -66,7 +66,7 @@
 </#if></#if>
 
 <#-- This is the option which push notification for new posts -->
-<#if optionsList[5]??><#if optionsList[5].uoValue == "1">
+<#if optionsList??><#if optionsList[5].uoValue == "1">
 	function getNewPostsCntAjax(maxUpsNo) {
 		var cdata = '{"upsNo":"' + maxUpsNo + '"}';
 		var curl = "${configBean.contextPath?if_exists}/abilists/sltNewPostsCntAjax";

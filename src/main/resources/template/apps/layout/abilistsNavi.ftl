@@ -44,11 +44,6 @@
           </ul>
 
       	  <ul class="nav navbar-nav navbar-right">
-      	  	<#if user??>
-      		  <#include "/apps/login/naviLogin.ftl">
-			<#else>
-      		  <#include "/apps/login/naviLogout.ftl">
-	     	</#if>
 
 <#include "/apps/common/abilistsLang.ftl"/>
 
