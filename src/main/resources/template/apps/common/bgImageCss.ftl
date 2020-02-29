@@ -2,7 +2,7 @@
 		.bg-image {
 			max-width:100%;
 			height: 430px;
-			background-image: url("/static/apps/img/defaultBg01.png");
+			background-image: url("<#if view?? && view == 'true'>${model.users.userImgBg?if_exists}<#else>${myImgBg?if_exists}</#if>");
 			background-color: #cccccc;
 			background-position: center;
 			background-repeat: no-repeat;
