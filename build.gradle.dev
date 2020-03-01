@@ -95,10 +95,6 @@ jar {
         )
     }
 
-//	exclude ("template/**")
-//	exclude ("**.xml")
-//	exclude ("**.properties")
-
 }
 
 // $ gradle install

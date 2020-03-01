@@ -8,7 +8,9 @@
 		<div class="bg-image">
 		    <div class="container">
 		    	<#include "abilistsPluginsMenu.ftl"/>
+		    	<#include "abilistsPluginsUser.ftl"/>
 				<#nested/>
+				<#include "/apps/common/abilistsPluginsLoadJs.ftl"/>
 				<#include "/apps/common/footer.ftl">
 		    </div><!-- /container -->
 		</div>
