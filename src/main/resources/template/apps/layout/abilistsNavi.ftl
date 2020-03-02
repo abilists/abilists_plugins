@@ -16,7 +16,7 @@
 
           <ul class="nav navbar-nav">
             <#if user??>
-    			<li <#if model??><#if model.navi??><#if model.navi == "list">class="active"</#if></#if></#if>><a href="${configBean.contextPath?if_exists}/list"><@spring.message "profile.menu.list"/></a></li>
+    			<li <#if model??><#if model.navi??><#if model.navi == "list">class="active"</#if></#if></#if>><a href="${configBean.contextPath?if_exists}/list"><@spring.message "navi.title.list"/></a></li>
             	<li <#if model??><#if model.navi??><#if model.navi == "profile">class="active"</#if></#if></#if>><a href="${configBean.contextPath?if_exists}/profile"><@spring.message "navi.title.profile"/></a></li>
             	<li <#if model??><#if model.navi??><#if model.navi == "works">class="active"</#if></#if></#if>><a href="${configBean.contextPath?if_exists}/works"><@spring.message "navi.title.works"/></a></li>
                 <li class="dropdown<#if model??><#if model.navi??><#if model.navi == 'plugins'> active</#if></#if></#if>">

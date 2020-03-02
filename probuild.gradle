@@ -34,7 +34,7 @@ buildscript {
 	}
 }
 
-version = 'DEV0.1.0'
+version = '0.1.0'
 
 jar {
 	manifest {
@@ -94,7 +94,11 @@ jar {
         	'Class-Path': configurations.runtime.files.collect { 'libs/' + it.name }.join(' ')
         )
     }
-
+	exclude ("spring/**")
+	exclude ("properties/**")
+	exclude ("template/**")
+	exclude ("**.xml")
+	exclude ("**.properties")
 }
 
 // $ gradle install
@@ -114,12 +118,12 @@ configure(install.repositories.mavenInstaller) {
     }
 }
 
-
+// $ gradle -b ./probuild.gradle buildJar
 // $ gradle buildJar
 task buildJar << {
 	copy {
 		from "build/libs/abilists_plugins-" + version + ".jar"
-		into "${System.getProperty( 'user.dir' )}" + "/../plugin_time_record/libs"
+		into "${System.getProperty( 'user.dir' )}" + "/../abilists_client/libs"
 		include '**/*.jar'
 	}
 }
