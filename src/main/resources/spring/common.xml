@@ -19,6 +19,7 @@
 	        	<value>properties/navi</value>
 	        	<value>properties/plugins/plugins</value>
 	        	<value>properties/abilists/abilists</value>
+	        	<value>properties/common/message</value>
 	        	<value>properties/client/client</value>
 	        </list>
 	    </property>
