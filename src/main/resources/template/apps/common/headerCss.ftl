@@ -11,3 +11,4 @@
 	<link href="${configBean.contextPath?if_exists}/static/apps/css/abilists/loading.css" rel="stylesheet">
     <link href="${configBean.contextPath?if_exists}/static/apps/css/title.css?2018081862" rel="stylesheet">
 	<link href="${configBean.contextPath?if_exists}/static/apps/css/table.css?20170834" rel="stylesheet">
+	<link href="${configBean.contextPath?if_exists}/static/apps/css/table-div.css?20170835" rel="stylesheet"><!-- Div table -->
