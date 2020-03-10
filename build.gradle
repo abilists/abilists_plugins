@@ -73,7 +73,7 @@ dependencies {
 	compile 'org.springframework:spring-webmvc:' + springVersion
 	compile 'org.springframework:spring-context:' + springVersion
 	compile "org.apache.tomcat:tomcat-servlet-api:8.5.5"
-	compile "io.base:base-core:0.2.0"
+	compile "io.base:base-core:0.2.2"
 
 	testCompile 'javax.servlet:javax.servlet-api:4.0.1'
 	testCompile "junit:junit:4.12"
