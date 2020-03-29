@@ -25,7 +25,7 @@
 	<div class="col-md-2 right-col-cus sideImg">
 		<div class="item-box" style="border: 0.5px solid #dadada;">
 			<a href="${configBean.contextPath?if_exists}/account">
-				<img style="border-radius: 4px;" src="${myImgAvatar?if_exists}" id="showImg" width="125" alt="your picture" />
+				<img style="border-radius: 4px;" src="${configBean.contextPath?if_exists}/static/apps/img/defaultUser.png" id="showImg" width="125" alt="your picture" />
 			</a>
 	    </div>
 	</div>

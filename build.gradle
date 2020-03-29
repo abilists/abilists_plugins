@@ -120,7 +120,7 @@ configure(install.repositories.mavenInstaller) {
 task buildJar << {
 	copy {
 		from "build/libs/abilists_plugins-" + version + ".jar"
-		into "${System.getProperty( 'user.dir' )}" + "/../plugin_time_record/libs"
+		into "${System.getProperty( 'user.dir' )}" + "/../plugin_sample/libs"
 		include '**/*.jar'
 	}
 }

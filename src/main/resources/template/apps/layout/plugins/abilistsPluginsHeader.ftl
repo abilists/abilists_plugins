@@ -13,5 +13,5 @@
 	<link href="${configBean.contextPath?if_exists}/static/apps/css/abilists/ad.css?2017102209" rel="stylesheet" >
 	<link href="${configBean.contextPath?if_exists}/static/apps/css/mobile.css?20170848" rel="stylesheet" >
 
-	<#include "/apps/common/bgImageCss.ftl"/>
+
 	</head>
