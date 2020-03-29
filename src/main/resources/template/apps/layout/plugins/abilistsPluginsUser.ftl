@@ -30,12 +30,14 @@
 	    </div>
 	</div>
 	<div class="col-sm-10 left-col-cus">
-		<a href="http://www.abilists.com/" target="_blank">
-			<img class="ad-img01" src="${configBean.contextPath?if_exists}/static/apps/img/abilists/adBanner01.png?2019010101" width="100%" alt="www.abilists.com">
-		    <div class="ad-title01" style="color: #4363a2;">
-				<h2>Platform for Experts</h2>
-				<p style="color: #5a5a5a;">Abilists is a talent management system that grasps the current technology and growth trends from an objective point of view.</p>
-			</div>
-		</a>
+		<div class="item-box">
+			<a href="http://www.abilists.com/" target="_blank">
+				<img class="ad-img01" src="${configBean.contextPath?if_exists}/static/apps/img/abilists/adBanner01.png?2019010101" width="100%" alt="www.abilists.com">
+			    <div class="ad-title01" style="color: #4363a2;">
+					<h2>Platform for Experts</h2>
+					<p style="color: #5a5a5a;">Abilists is a talent management system that grasps the current technology and growth trends from an objective point of view.</p>
+				</div>
+			</a>
+		</div>
 	</div>
 </div>
