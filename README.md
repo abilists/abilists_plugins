@@ -5,8 +5,6 @@ abilists_plugins is a plugin infterface module for Abilists.
 
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/abilists/abilists_plugins)
 
-![markdown](https://github.com/abilists/plugin_time_record/blob/master/doc/img/record01.png)
-
 abilists_plugins은 어빌리스츠 플랫폼과 플러그인 개발에 필요한 인터페이스 역활을 합니다. 
 
 ## 필요한 시스템 환경
