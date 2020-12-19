@@ -1,8 +1,5 @@
 # abilists_plugins <a href="http://www.abilists.com" ><img src="https://github.com/minziappa/abilists_client/blob/master/src/main/webapp/static/apps/img/abilists/logo01.png" height="22" alt="Abilists"></a>
 --------------------------------------------------
-
-abilists_plugins is a plugin infterface module for Abilists.
-
 ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/abilists/abilists_plugins)
 
 abilists_plugins은 어빌리스츠 플랫폼과 플러그인 개발에 필요한 인터페이스 역활을 합니다. 
@@ -40,11 +37,6 @@ abilists_plugins은 어빌리스츠 플랫폼과 플러그인 개발에 필요�
 * [io.utility:security:0.0.1](https://github.com/abilists/security_utility)
 * [io.utility:letter:0.0.7](https://github.com/abilists/letter_utility)
 * [io.utility:api:0.0.4](https://github.com/abilists/api_utility)
-
-Local 시스템에서 설치합니다.
-```
-$ gradle install
-```
 
 
 ## License
