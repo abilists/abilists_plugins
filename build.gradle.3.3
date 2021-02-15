@@ -1,8 +1,25 @@
 apply plugin: 'java'
+apply plugin: 'org.sonarqube'
+apply plugin: 'jacoco'
+apply plugin: 'eclipse'
 apply plugin: 'maven'
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
+
+//./gradlew sonarqube
+//./gradlew sonarqube -x test
+sonarqube {
+    properties {
+        property "sonar.projectName", "Java :: Abilists Project :: Abilists Core"
+        property "sonar.projectKey", "$project.group:$project.name"
+        property "sonar.language", "java"
+        property "sonar.sources", "src"
+        property "sonar.sourceEncoding", "UTF-8"
+        property "sonar.junit.reportsPath", "${project.buildDir}/test-results"
+        property "sonar.jacoco.reportPath", "${project.buildDir}/jacoco/test.exec"
+    }
+}
 
 buildscript {
 	repositories { 
@@ -11,9 +28,19 @@ buildscript {
 			url "https://plugins.gradle.org/m2/"
 		}
 	}
+	dependencies { 
+      classpath 'org.ajoberstar:gradle-jacoco:0.1.0'
+      classpath 'org.sonarqube.gradle:gradle-sonarqube-plugin:1.0'
+	}
 }
 
-version = '0.1.0'
+version = 'DEV0.1.0'
+
+jar {
+	manifest {
+		attributes 'Implementation-Title': 'Abilists', 'Implementation-Version': version
+	}
+}
 
 repositories {
 	mavenLocal()
@@ -67,11 +94,7 @@ jar {
         	'Class-Path': configurations.runtime.files.collect { 'libs/' + it.name }.join(' ')
         )
     }
-	exclude ("spring/**")
-	exclude ("properties/**")
-	exclude ("template/**")
-	exclude ("**.xml")
-	exclude ("**.properties")
+
 }
 
 // $ gradle install
@@ -91,13 +114,19 @@ configure(install.repositories.mavenInstaller) {
     }
 }
 
-// $ gradle -b ./probuild.gradle buildJar
+
+// $ gradle -b ./devbuild.gradle buildJar
 // $ gradle buildJar
-task buildJar {
+task buildJar << {
 	copy {
 		from "build/libs/abilists_plugins-" + version + ".jar"
-		into "${System.getProperty( 'user.dir' )}" + "/../abilists_client/libs"
+		into "${System.getProperty( 'user.dir' )}" + "/../plugin_sample/libs"
 		include '**/*.jar'
 	}
 }
 buildJar.dependsOn(install)
+
+// $ gradle wrapper
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.3'
+}
