@@ -26,10 +26,10 @@ configurations {
 }
 
 ext {
-	springVersion = '4.3.28.RELEASE'
+	springVersion = '4.3.30.RELEASE'
 	springSecrityVersion = '4.2.6.RELEASE'
 	atomikosVersion = '4.0.6'
-	logbackVersion = '1.1.3'
+	logbackVersion = '1.2.9'
 }
 
 dependencies {
@@ -46,7 +46,7 @@ dependencies {
 	compile 'org.springframework:spring-webmvc:' + springVersion
 	compile 'org.springframework:spring-context:' + springVersion
 	compile "org.apache.tomcat:tomcat-servlet-api:8.5.5"
-	compile "io.base:base-core:0.2.5"
+	compile "io.base:base-core:0.2.7"
 
 	testCompile 'javax.servlet:javax.servlet-api:4.0.1'
 	testCompile "junit:junit:4.12"
