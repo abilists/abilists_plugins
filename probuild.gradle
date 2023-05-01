@@ -1,3 +1,4 @@
+// gradle -b ./probuild.gradle publishToMavenLocal
 plugins {
     id 'java'
     id 'maven-publish'
@@ -7,17 +8,17 @@ sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
 repositories {
-    // Use Maven Central for resolving dependencies.
 	mavenLocal()
     mavenCentral()
     jcenter()
-//	maven {
-//		url 'http://localhost:8081/artifactory/libs-release-local'
-//		allowInsecureProtocol = true
-//	}
 }
 
-version = 'DEV0.1.1'
+version = '0.1.1'
+
+// For provided jars
+configurations {
+	provided
+}
 
 // gradle publish
 publishing {
@@ -58,7 +59,6 @@ ext {
 }
 
 dependencies {
-
 	implementation "org.slf4j:slf4j-api:1.7.12"
 	runtimeOnly "org.slf4j:jcl-over-slf4j:1.7.12"
 	implementation 'ch.qos.logback:logback-core:' + logbackVersion
@@ -76,6 +76,28 @@ dependencies {
 
 	testImplementation 'javax.servlet:javax.servlet-api:4.0.1'
 	testImplementation "junit:junit:4.12"
+}
+
+jar {
+    manifest {
+        attributes (
+        	'Specification-Title': 'abilists_plugins.jar',
+        	'Specification-Version': version,
+        	'Specification-Vendor': 'Softfran Tech, Inc.',
+        	'Built-By': System.properties['user.name'],
+        	'Build-Timestamp': new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date()),
+        	'Created-By': "Gradle ${gradle.gradleVersion}",
+        	'Build-Jdk': "${System.properties['java.version']}",
+        	'Implementation-Title': 'abilists plugins', 
+        	'Implementation-Version': version, 
+        	'Class-Path': configurations.compileClasspath.files.collect { "deps/$it.name" }.join(' ')
+        )
+    }
+	exclude ("spring/**")
+	exclude ("properties/**")
+	exclude ("template/**")
+	exclude ("**.xml")
+	exclude ("**.properties")
 }
 
 // To install this jar into localhost
