@@ -1,9 +1,12 @@
-apply plugin: 'java'
-apply plugin: 'maven'
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
 
 sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
+/*
 buildscript {
 	repositories {
 		maven {
@@ -12,18 +15,50 @@ buildscript {
 		jcenter()
 	}
 }
+*/
 
 repositories {
+    // Use Maven Central for resolving dependencies.
 	mavenLocal()
     mavenCentral()
     jcenter()
+//	maven {
+//		url 'http://localhost:8081/artifactory/libs-release-local'
+//		allowInsecureProtocol = true
+//	}
 }
 
 version = 'DEV0.1.1'
 
-// For provided jars
-configurations {
-	provided
+// gradle publish
+publishing {
+
+    publications {
+        maven(MavenPublication) {
+            groupId = 'com.abilistsr'
+            artifactId = 'abilists_plugins'
+            version = project.version
+            
+            artifact 'build/libs/abilists_plugins-' + project.version + '.jar'
+        }
+    }
+
+    repositories {
+        maven {
+            credentials {
+                username = "admin"
+                password = "password"
+            }
+            url = "http://localhost:8081/artifactory/libs-release-local"
+            allowInsecureProtocol = true
+        }
+    }
+}
+
+tasks.named('jar') {
+    manifest {
+        attributes('Implementation-Title': 'ABILISTS_PLUGINS', 'Implementation-Version': project.version)
+    }
 }
 
 ext {
@@ -34,66 +69,25 @@ ext {
 }
 
 dependencies {
-	compile "org.slf4j:slf4j-api:1.7.12"
-	runtime "org.slf4j:jcl-over-slf4j:1.7.12"
-	compile 'ch.qos.logback:logback-core:' + logbackVersion
-	compile 'ch.qos.logback:logback-classic:' + logbackVersion
-	compile "org.mybatis:mybatis:3.2.8"
-	compile "org.mybatis:mybatis-spring:1.2.5"
-	compile ('org.springmodules:spring-modules-jakarta-commons:0.8') {
+
+	implementation "org.slf4j:slf4j-api:1.7.12"
+	runtimeOnly "org.slf4j:jcl-over-slf4j:1.7.12"
+	implementation 'ch.qos.logback:logback-core:' + logbackVersion
+	implementation 'ch.qos.logback:logback-classic:' + logbackVersion
+	implementation "org.mybatis:mybatis:3.2.8"
+	implementation "org.mybatis:mybatis-spring:1.2.5"
+	implementation ('org.springmodules:spring-modules-jakarta-commons:0.8') {
 		exclude group: 'commons-chain', module: 'commons-chain'
 	}
-	compile 'org.springframework:spring-jdbc:' + springVersion
-	compile 'org.springframework:spring-webmvc:' + springVersion
-	compile 'org.springframework:spring-context:' + springVersion
-	compile "org.apache.tomcat:tomcat-servlet-api:8.5.5"
-	compile "io.base:base-core:0.2.8"
+	implementation 'org.springframework:spring-jdbc:' + springVersion
+	implementation 'org.springframework:spring-webmvc:' + springVersion
+	implementation 'org.springframework:spring-context:' + springVersion
+	implementation "org.apache.tomcat:tomcat-servlet-api:8.5.5"
+	implementation "base.core:base-core:0.2.8"
 
-	testCompile 'javax.servlet:javax.servlet-api:4.0.1'
-	testCompile "junit:junit:4.12"
+	testImplementation 'javax.servlet:javax.servlet-api:4.0.1'
+	testImplementation "junit:junit:4.12"
 }
 
-jar {
-    manifest {
-        attributes (
-        	'Specification-Title': 'abilists_plugins.jar',
-        	'Specification-Version': version,
-        	'Specification-Vendor': 'Softfran Tech, Inc.',
-        	'Built-By': System.properties['user.name'],
-        	'Build-Timestamp': new java.text.SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date()),
-        	'Created-By': "Gradle ${gradle.gradleVersion}",
-        	'Build-Jdk': "${System.properties['java.version']}",
-        	'Implementation-Title': 'abilists plugins', 
-        	'Implementation-Version': version, 
-        	'Class-Path': configurations.runtime.files.collect { 'libs/' + it.name }.join(' ')
-        )
-    }
-}
-
-// $ gradle install
-configure(install.repositories.mavenInstaller) {
-    pom.project {
-		group = 'com.abilists'
-		artifactId 'abilists_plugins'
-        inceptionYear '2019'
-        packaging 'jar'
-        licenses {
-            license {
-                name 'Eclipse Public License (Version 1.0)'
-                url 'http://www.eclipse.org/legal/epl-v10.html'
-                distribution 'repo'
-            }
-        }
-    }
-}
-
-// $ gradle -b ./devbuild.gradle buildJar
-// $ gradle buildJar
-task buildJar {
-	copy {
-		from "build/libs/abilists_plugins-" + version + ".jar"
-		into "${System.getProperty( 'user.dir' )}" + "/../plugin_sample/libs"
-		include '**/*.jar'
-	}
-}
-buildJar.dependsOn(install)
+// To install this jar into localhost
+// gradle publishToMavenLocal like gradle install
