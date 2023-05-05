@@ -1,3 +1,4 @@
+// gradle -b ./probuild.gradle build -x test
 // gradle -b ./probuild.gradle publishToMavenLocal
 plugins {
     id 'java'
@@ -26,7 +27,7 @@ publishing {
     publications {
         maven(MavenPublication) {
             groupId = 'com.abilists'
-            artifactId = 'abilists_plugins'
+            artifactId = 'abilists-plugins'
             version = project.version
             
             artifact 'build/libs/abilists_plugins-' + project.version + '.jar'
@@ -52,8 +53,8 @@ tasks.named('jar') {
 }
 
 ext {
-	springVersion = '4.3.30.RELEASE'
-	springSecrityVersion = '4.2.6.RELEASE'
+	springVersion = '5.3.23'
+	springSecrityVersion = '5.7.4'
 	atomikosVersion = '4.0.6'
 	logbackVersion = '1.2.9'
 }
