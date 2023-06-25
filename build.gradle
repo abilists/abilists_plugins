@@ -80,5 +80,14 @@ dependencies {
 	testImplementation "junit:junit:4.12"
 }
 
+// $ gradle -b ./devbuild.gradle buildJar
+// $ gradle buildJar
+task buildJar {
+	copy {
+		from "build/libs/abilists_plugins-" + version + ".jar"
+		into "${System.getProperty( 'user.dir' )}" + "/../plugin_sample/libs"
+		include '**/*.jar'
+	}
+}
 // To install this jar into localhost
 // gradle publishToMavenLocal like gradle install

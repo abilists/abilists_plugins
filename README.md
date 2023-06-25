@@ -35,7 +35,7 @@ abilists_plugins은 어빌리스츠 플랫폼과 플러그인 개발에 필요�
 아래의 유틸리티를 Clone을 해서 Local에 설치할 필요가 있습니다.
 
 * [io.utility:security:0.0.3](https://github.com/abilists/security_utility)
-* [io.utility:letter:0.0.7](https://github.com/abilists/letter_utility)
+* [io.utility:letter:0.0.8](https://github.com/abilists/letter_utility)
 * [io.utility:api:0.0.4](https://github.com/abilists/api_utility)
 
 

@@ -16,11 +16,6 @@ repositories {
 
 version = '0.1.1'
 
-// For provided jars
-configurations {
-	provided
-}
-
 // gradle publish
 publishing {
 
@@ -58,7 +53,6 @@ ext {
 
 	springVersion = '5.3.23'
 	springSecrityVersion = '5.7.4'
-	atomikosVersion = '4.0.6'
 }
 
 dependencies {
@@ -104,5 +98,14 @@ jar {
 	exclude ("**.properties")
 }
 
+// $ gradle -b ./probuild.gradle buildJar
+// $ gradle buildJar
+task buildJar {
+	copy {
+		from "build/libs/abilists_plugins-" + version + ".jar"
+		into "${System.getProperty( 'user.dir' )}" + "/../abilists_client/libs"
+		include '**/*.jar'
+	}
+}
 // To install this jar into localhost
 // gradle publishToMavenLocal like gradle install
